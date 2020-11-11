@@ -1,0 +1,7 @@
+public class ViewListOfAccountCtrl {
+   
+    @AuraEnabled
+    public static List<Account> getListOfAccounts(){
+        return [SELECT Id, Name FROM Account order by createddate desc LIMIT 10];
+    }
+}

@@ -1,0 +1,21 @@
+({
+ 
+    doInit: function(component, event, helper) {
+       
+        var action = component.get("c.getListOfAccounts");
+        
+        action.setCallback(this, function(response){
+            
+            var state = response.getState();
+           
+            if (state === "SUCCESS"){
+                var lstOfAcc = response.getReturnValue();
+                console.log("State === > "+lstOfAcc);
+             if(lstOfAcc != null)
+                 component.set("v.listOfAccounts", lstOfAcc);
+            }
+        });
+        
+        $A.enqueueAction(action);
+    }
+})
